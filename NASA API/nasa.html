@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+    <head>
+        <title>NASA API</title>
+        <style>
+            *{
+                background-color: black;
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="result">
+            <thing id="img"></thing>
+            <p id="copyright">
+                <h1 id="title"></h1>
+                <p id="description"></p>
+            </p>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+
+            $.ajax({
+                url:'https://api.nasa.gov/planetary/apod?api_key=**************************************',
+                success:function(word)
+                {
+                    document.getElementById("img").innerHTML="<img src='"+word.url+"'style='width:100%;'/>"
+                    document.getElementById("copyright").innerHTML="By "+word.copyright;
+                    document.getElementById("title").innerHTML=word.title;
+                    document.getElementById("description").innerHTML=word.explanation;
+                }
+            });
+
+        </script>
+    </body>
+</html>
